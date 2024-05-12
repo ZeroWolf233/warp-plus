@@ -76,7 +76,7 @@ while True:
 			print("发送请求成功")
 			print(f"使用ID: {referrer}")
 			print(f"{g} GB的WARP+流量已经添加到您的账户")
-			print("18秒后会再次发送一个请求")
+			print("\n18秒后会再次发送一个请求")
 			print('{冷却}'+animation[i % len(animation)])
 			print(f"\n共计: {g} GB成功 {b} GB失败\n")
 	else:
