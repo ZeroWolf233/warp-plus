@@ -63,7 +63,8 @@ referrer = input("请输入您的 设备ID 大抵可以在 设置-高级-诊断 
 print("好的，请稍后，我们正在处理您的ID")
 
 while True:
-	print('试图发送请求ing...')
+	os.system('cls' if os.name == 'nt' else 'clear')
+	print('\r试图发送请求ing...')
 	result = run()
 	if result == 200:
 		g = g + 1
