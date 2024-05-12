@@ -11,5 +11,5 @@
 直接git以获得python源码，exe正式版在[Release](https://github.com/ZeroWolf233/free-warp-plus/releases)有
 
 # 接下来打算做的事
-- []写完gui版
-- []整个图标
+- [ ] 做出gui版
+- [ ] 整个图标
