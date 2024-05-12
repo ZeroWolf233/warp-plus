@@ -70,12 +70,12 @@ while True:
 		os.system('cls' if os.name == 'nt' else 'clear')
 		for i in range(len(animation)):
 			time.sleep(1.63)
+			os.system('cls' if os.name == 'nt' else 'clear')
 			print("\r发送请求成功")
 			print(f"使用ID: {referrer}")
 			print(f"{g} GB的WARP+流量已经添加到您的账户")
 			print(f"共计: {g} GB成功 {b} GB失败\n")
 			print("18秒后会再次发送一个请求")
-			os.system('cls' if os.name == 'nt' else 'clear')
 			print('\r{冷却}'+animation[i % len(animation)])
 	else:
 		b = b + 1
