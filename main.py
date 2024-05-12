@@ -46,35 +46,37 @@ def run():
 
 g = 0
 b = 0
+animation = [
+	"[□□□□□□□□□□] 0%",
+	"[■□□□□□□□□□] 10%",
+	"[■■□□□□□□□□] 20%",
+	"[■■■□□□□□□□] 30%",
+	"[■■■■□□□□□□] 40%",
+	"[■■■■■□□□□□] 50%",
+	"[■■■■■■□□□□] 60%",
+	"[■■■■■■■□□□] 70%",
+	"[■■■■■■■■□□] 80%",
+	"[■■■■■■■■■□] 90%",
+	"[■■■■■■■■■■] 100%"]
 
 referrer = input("请输入您的 设备ID 大抵可以在 设置-高级-诊断 中找到:")
 print("好的，请稍后，我们正在处理您的ID")
 
 while True:
+	print('试图发送请求ing...')
 	result = run()
 	if result == 200:
 		g = g + 1
 		os.system('cls' if os.name == 'nt' else 'clear')
-		animation = [
-				"[□□□□□□□□□□] 0%",
-				"[■□□□□□□□□□] 10%",
-				"[■■□□□□□□□□] 20%",
-				"[■■■□□□□□□□] 30%",
-				"[■■■■□□□□□□] 40%",
-				"[■■■■■□□□□□] 50%",
-				"[■■■■■■□□□□] 60%",
-				"[■■■■■■■□□□] 70%",
-				"[■■■■■■■■□□] 80%", 
-				"[■■■■■■■■■□] 90%",
-				"[■■■■■■■■■■] 100%"] 
-		print("\r发送请求成功")
-		print(f"使用ID: {referrer}")
-		print(f"{g} GB的WARP+流量已经添加到您的账户")
-		print(f"共计: {g} GB成功 {b} GB失败\n")
-		print("18秒后会再次发送一个请求")
 		for i in range(len(animation)):
 			time.sleep(1.63)
-			print('{冷却}'+animation[i % len(animation)])
+			print("\r发送请求成功")
+			print(f"使用ID: {referrer}")
+			print(f"{g} GB的WARP+流量已经添加到您的账户")
+			print(f"共计: {g} GB成功 {b} GB失败\n")
+			print("18秒后会再次发送一个请求")
+			os.system('cls' if os.name == 'nt' else 'clear')
+			print('\r{冷却}'+animation[i % len(animation)])
 	else:
 		b = b + 1
 		os.system('cls' if os.name == 'nt' else 'clear')
