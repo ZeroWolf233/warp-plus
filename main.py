@@ -76,7 +76,7 @@ while True:
 			print("发送请求成功")
 			print(f"使用ID: {referrer}")
 			print(f"{g} GB的WARP+流量已经添加到您的账户")
-			print("\n18秒后会再次发送一个请求")
+			print("\n18 秒后会再次发送一个请求")
 			print('{冷却}'+animation[i % len(animation)])
 			print(f"\n共计: {g} GB成功 {b} GB失败\n")
 	else:
@@ -84,5 +84,5 @@ while True:
 		os.system('cls' if os.name == 'nt' else 'clear')
 		print("错误!无法连接到服务器")
 		print(f"总计: {g} GB成功 {b} GB失败")
-		print('软件将在20秒后重试')
+		print('!!!软件将在 20 秒后重试!!!')
 		time.sleep(20)
