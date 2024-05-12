@@ -84,3 +84,5 @@ while True:
 		os.system('cls' if os.name == 'nt' else 'clear')
 		print("错误!无法连接到服务器")
 		print(f"总计: {g} GB成功 {b} GB失败")
+		print('软件将在20秒后重试')
+		time.sleep(20)
