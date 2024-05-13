@@ -9,7 +9,9 @@
 
 # 如何使用
 直接git以获得python源码，exe正式版在[Release](https://github.com/ZeroWolf233/free-warp-plus/releases)有
+- 设备 ID 可以在手机端1.1.1.1的 设置-高级-诊断 中找到，可以在PC端的设置中直接看到
+- 在发送完一次请求后会有18秒的冷却，以防止被Cloudflare给ban掉
 
 # 接下来打算做的事
-- [ ] 做出gui版
+- [ ] 修改gui版使其完美
 - [ ] 整个图标
