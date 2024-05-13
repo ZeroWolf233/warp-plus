@@ -6,6 +6,7 @@ import datetime
 import random
 import string
 import time
+import threading
 
 # 全局变量
 g = 0
@@ -56,25 +57,28 @@ def run(referrer, progress):
         print(error)
 
 def start_process():
-    global g, b
     referrer = referrer_entry.get()
     if referrer:
-        while True:
-            result = run(referrer, progress_bar)
-            if result == 200:
-                g = g + 1
-                success_label.config(text=f"成功: {g}")
-                time.sleep(18)  # 每次请求后等待18秒
-                # 重置进度条
-                progress_bar['value'] = 0
-            else:
-                b = b + 1
-                fail_label.config(text=f"失败: {b}")
-                time.sleep(18)  # 每次请求后等待18秒
-                # 重置进度条
-                progress_bar['value'] = 0
+        threading.Thread(target=process_request, args=(referrer,)).start()
     else:
         messagebox.showerror("错误", "请输入您的设备ID")
+
+def process_request(referrer):
+    global g, b
+    while True:
+        result = run(referrer, progress_bar)
+        if result == 200:
+            g = g + 1
+            success_label.config(text=f"成功: {g}")
+            time.sleep(18)  # 每次请求后等待18秒
+            # 重置进度条
+            progress_bar['value'] = 0
+        else:
+            b = b + 1
+            fail_label.config(text=f"失败: {b}")
+            time.sleep(18)  # 每次请求后等待18秒
+            # 重置进度条
+            progress_bar['value'] = 0
 
 # 创建主窗口
 root = tk.Tk()
