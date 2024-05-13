@@ -65,13 +65,17 @@ def start_process():
 
 def process_request(referrer):
     global g, b
+    first_request = True
     while True:
-        progress_bar['value'] = 0  # 重置进度条
-        for _ in range(18):
-            time.sleep(1)  # 每次等待1秒
-            progress_bar['value'] += (100 / 18)  # 更新进度条
-            progress_bar.update()
+        if not first_request:
+            progress_bar['value'] = 0  # 重置进度条
+            for _ in range(18):
+                time.sleep(1)  # 每次等待1秒
+                progress_bar['value'] += (100 / 18)  # 更新进度条
+                progress_bar.update()
         result = run(referrer, progress_bar)
+        if first_request:
+            first_request = False
         if result == 200:
             g = g + 1
             success_label.config(text=f"成功: {g} GB")
@@ -81,7 +85,7 @@ def process_request(referrer):
 
 # 创建主窗口
 root = tk.Tk()
-root.title("Warp+ 流量添加")
+root.title("Warp+")
 
 # 标签和输入框
 referrer_label = tk.Label(root, text="设备ID:")
