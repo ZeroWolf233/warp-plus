@@ -64,15 +64,15 @@ def start_process():
             if result == 200:
                 g = g + 1
                 success_label.config(text=f"成功: {g}")
-                # 这里添加更新UI的代码
-                # 例如：progress_label.config(text="发送请求...")
-                # 你需要自己根据需要更新UI
+                time.sleep(18)  # 每次请求后等待18秒
+                # 重置进度条
+                progress_bar['value'] = 0
             else:
                 b = b + 1
                 fail_label.config(text=f"失败: {b}")
-                # 这里添加更新UI的代码
-                # 例如：messagebox.showerror("错误", "无法连接到服务器")
-                # 你需要自己根据需要更新UI
+                time.sleep(18)  # 每次请求后等待18秒
+                # 重置进度条
+                progress_bar['value'] = 0
     else:
         messagebox.showerror("错误", "请输入您的设备ID")
 
