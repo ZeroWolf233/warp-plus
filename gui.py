@@ -1,12 +1,15 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import ttk, messagebox
 import urllib.request
 import json
 import datetime
 import random
 import string
 import time
-import os
+
+# 全局变量
+g = 0
+b = 0
 
 def genString(stringLength):
     try:
@@ -22,7 +25,7 @@ def digitString(stringLength):
     except Exception as error:
         print(error)
 
-def run(referrer):
+def run(referrer, progress):
     try:
         url = f'https://api.cloudflareclient.com/v0a{digitString(3)}/reg'
         install_id = genString(22)
@@ -43,6 +46,11 @@ def run(referrer):
         req = urllib.request.Request(url, data, headers)
         response = urllib.request.urlopen(req)
         status_code = response.getcode()
+        # 更新进度条
+        for i in range(100):
+            time.sleep(0.01)  # 每次循环暂停0.01秒
+            progress['value'] = i + 1
+            progress.update()
         return status_code
     except Exception as error:
         print(error)
@@ -51,17 +59,17 @@ def start_process():
     global g, b
     referrer = referrer_entry.get()
     if referrer:
-        messagebox.showinfo("提示", "请稍后，正在处理您的ID")
         while True:
-            result = run(referrer)
+            result = run(referrer, progress_bar)
             if result == 200:
                 g = g + 1
-
+                success_label.config(text=f"成功: {g}")
                 # 这里添加更新UI的代码
                 # 例如：progress_label.config(text="发送请求...")
                 # 你需要自己根据需要更新UI
             else:
                 b = b + 1
+                fail_label.config(text=f"失败: {b}")
                 # 这里添加更新UI的代码
                 # 例如：messagebox.showerror("错误", "无法连接到服务器")
                 # 你需要自己根据需要更新UI
@@ -70,7 +78,7 @@ def start_process():
 
 # 创建主窗口
 root = tk.Tk()
-root.title("Warp+ 流量添加")
+root.title("Warp+")
 
 # 标签和输入框
 referrer_label = tk.Label(root, text="设备ID:")
@@ -78,9 +86,19 @@ referrer_label.grid(row=0, column=0, padx=10, pady=5, sticky="e")
 referrer_entry = tk.Entry(root)
 referrer_entry.grid(row=0, column=1, padx=10, pady=5)
 
+# 进度条
+progress_bar = ttk.Progressbar(root, orient='horizontal', mode='determinate', length=200)
+progress_bar.grid(row=1, columnspan=2, padx=10, pady=5)
+
+# 成功和失败次数标签
+success_label = tk.Label(root, text="成功: 0")
+success_label.grid(row=2, column=0, padx=10, pady=5, sticky="w")
+fail_label = tk.Label(root, text="失败: 0")
+fail_label.grid(row=2, column=1, padx=10, pady=5, sticky="e")
+
 # 开始按钮
 start_button = tk.Button(root, text="开始", command=start_process)
-start_button.grid(row=1, columnspan=2, padx=10, pady=5)
+start_button.grid(row=3, columnspan=2, padx=10, pady=5)
 
 # 运行主循环
 root.mainloop()
