@@ -5,8 +5,8 @@ import json
 import datetime
 import random
 import string
-import time
 import threading
+import time
 
 # 全局变量
 g = 0
@@ -66,23 +66,22 @@ def start_process():
 def process_request(referrer):
     global g, b
     while True:
+        progress_bar['value'] = 0  # 重置进度条
+        for _ in range(18):
+            time.sleep(1)  # 每次等待1秒
+            progress_bar['value'] += (100 / 18)  # 更新进度条
+            progress_bar.update()
         result = run(referrer, progress_bar)
         if result == 200:
             g = g + 1
-            success_label.config(text=f"成功: {g}")
-            time.sleep(18)  # 每次请求后等待18秒
-            # 重置进度条
-            progress_bar['value'] = 0
+            success_label.config(text=f"成功: {g} GB")
         else:
             b = b + 1
-            fail_label.config(text=f"失败: {b}")
-            time.sleep(18)  # 每次请求后等待18秒
-            # 重置进度条
-            progress_bar['value'] = 0
+            fail_label.config(text=f"失败: {b} GB")
 
 # 创建主窗口
 root = tk.Tk()
-root.title("Warp+")
+root.title("Warp+ 流量添加")
 
 # 标签和输入框
 referrer_label = tk.Label(root, text="设备ID:")
@@ -95,9 +94,9 @@ progress_bar = ttk.Progressbar(root, orient='horizontal', mode='determinate', le
 progress_bar.grid(row=1, columnspan=2, padx=10, pady=5)
 
 # 成功和失败次数标签
-success_label = tk.Label(root, text="成功: 0")
+success_label = tk.Label(root, text="成功: 0 GB")
 success_label.grid(row=2, column=0, padx=10, pady=5, sticky="w")
-fail_label = tk.Label(root, text="失败: 0")
+fail_label = tk.Label(root, text="失败: 0 GB")
 fail_label.grid(row=2, column=1, padx=10, pady=5, sticky="e")
 
 # 开始按钮
