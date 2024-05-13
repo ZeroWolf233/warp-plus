@@ -65,25 +65,19 @@ def start_process():
 
 def process_request(referrer):
     global g, b
-    progress_bar['value'] = 0  # 重置进度条
-    progress_bar.update()
-    # 发送请求前的提示
-    status_label.config(text="[发送请求] 正在发送请求...", fg="red")
-    result = run(referrer, progress_bar)
-    if result == 200:
-        g = g + 1
-        success_label.config(text=f"成功: {g} GB")
-    else:
-        b = b + 1
-        fail_label.config(text=f"失败: {b} GB")
-    # 请求完成后的提示
-    status_label.config(text="[等待] 请求完成，正在等待18秒...", fg="red")
-    threading.Thread(target=wait_and_reset).start()
-
-def wait_and_reset():
-    time.sleep(18)
-    progress_bar['value'] = 0
-    status_label.config(text="", fg="black")
+    while True:
+        progress_bar['value'] = 0  # 重置进度条
+        for _ in range(18):
+            time.sleep(1)  # 每次等待1秒
+            progress_bar['value'] += (100 / 18)  # 更新进度条
+            progress_bar.update()
+        result = run(referrer, progress_bar)
+        if result == 200:
+            g = g + 1
+            success_label.config(text=f"成功: {g} GB")
+        else:
+            b = b + 1
+            fail_label.config(text=f"失败: {b} GB")
 
 # 创建主窗口
 root = tk.Tk()
@@ -105,13 +99,9 @@ success_label.grid(row=2, column=0, padx=10, pady=5, sticky="w")
 fail_label = tk.Label(root, text="失败: 0 GB")
 fail_label.grid(row=2, column=1, padx=10, pady=5, sticky="e")
 
-# 进度提示标签
-status_label = tk.Label(root, text="")
-status_label.grid(row=3, columnspan=2, padx=10, pady=5)
-
 # 开始按钮
 start_button = tk.Button(root, text="开始", command=start_process)
-start_button.grid(row=4, columnspan=2, padx=10, pady=5)
+start_button.grid(row=3, columnspan=2, padx=10, pady=5)
 
 # 运行主循环
 root.mainloop()
