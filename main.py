@@ -27,15 +27,15 @@ def run():
 				"fcm_token": "{}:APA91b{}".format(install_id, genString(134)),
 				"referrer": referrer,
 				"warp_enabled": False,
-				"tos": datetime.datetime.now().isoformat()[:-3] + "+02:00",
+				"tos": datetime.datetime.now().isoformat()[:-3] + "-05:00",
 				"type": "Android",
-				"locale": "es_ES"}
+				"locale": "en_US"}
 		data = json.dumps(body).encode('utf8')
 		headers = {'Content-Type': 'application/json; charset=UTF-8',
 					'Host': 'api.cloudflareclient.com',
 					'Connection': 'Keep-Alive',
 					'Accept-Encoding': 'gzip',
-					'User-Agent': 'okhttp/3.12.1'
+					'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0'
 					}
 		req         = urllib.request.Request(url, data, headers)
 		response    = urllib.request.urlopen(req)
