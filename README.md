@@ -9,7 +9,6 @@ Cloudflare Warp的分享链接的api有bug可以通过api刷分享次数，只�
 # 贡献说明
 - 你可以帮我测试各种bug并且在issues提交
 - 如果对于代码有更好的修改建议的，可以[联系我](https://github.com/ZeroWolf233/ZeroWolf233/blob/main/README.md)~~其实你直接pull我也没啥大意见~~
-- 或者帮我画个图标啥的
 
 # 如何使用
 直接git以获得python源码，exe正式版在[Release](https://github.com/ZeroWolf233/free-warp-plus/releases)有
@@ -18,7 +17,6 @@ Cloudflare Warp的分享链接的api有bug可以通过api刷分享次数，只�
 
 # 接下来打算做的事
 - [ ] 修改gui版使其完美
-- [ ] 整个图标
 
 # 友情链接
 [Cloudflare Warp官网](https://one.one.one.one/)
