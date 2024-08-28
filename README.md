@@ -8,10 +8,7 @@ Cloudflare Warp的分享链接的api有bug可以通过api刷分享次数，只�
 
 # 下载
  - [Release](https://github.com/ZeroWolf233/warp-plus/releases)
-
- - 感谢[iodine](https://github.com/Zero-Octagon/iodine-at-home)提供更快的下载支持
-1. [无GUI版本](http://zerowolf.top:93/files/Warp/Warp+.exe)
-2. [有GUI版本](http://zerowolf.top:93/files/Warp/gui_Warp+.exe)
+ - [Alist](http://zerowolf.top:5244/阿里云/code/warp-plus)
 
 # 贡献说明
 - 你可以帮我测试各种bug并且在issues提交
