@@ -8,7 +8,7 @@ Cloudflare Warp的分享链接的api有bug可以通过api刷分享次数，只�
 
 # 下载
  - [Release](https://github.com/ZeroWolf233/warp-plus/releases)
- - [Alist](http://zerowolf.top:5244/阿里云/code/warp-plus)
+ - [Alist](https://zerowolf.top:5244/阿里云/code/warp-plus)
 
 # 贡献说明
 - 你可以帮我测试各种bug并且在issues提交
